@@ -11,10 +11,10 @@ const bcrypt = require("bcrypt");
 app.use(bodyParser.json());
 require("dotenv").config();
 
-const clientId = process.env.clientId;
-const secret = process.env.secret;
-const JWT_SECRET = process.env.JWT_SECRET;
-const PORT = process.env.PORT;
+const clientId = "Your Paypal client id";
+const secret = "Your Paypal client secret";
+const JWT_SECRET = "Your jwt secret";
+const PORT = "Auth server port number";
 
 paypal.configure({
   mode: "sandbox",
@@ -23,10 +23,10 @@ paypal.configure({
 });
 
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_DATABASE,
+  host: "database URL",
+  user: "username",
+  password: "password",
+  database: "database name",
 });
 
 db.connect((err) => {
@@ -56,8 +56,8 @@ const {userid} = req.query;
           payment_method: "paypal",
         },
         redirect_urls: {
-          return_url: "https://trackwise.pasiyaprogramming.live/success",
-          cancel_url: "https://trackwise.pasiyaprogramming.live/cancel",
+          return_url: "Your redirect url",
+          cancel_url: "Your cancel url",
         },
         transactions: [
           {
